@@ -39,8 +39,20 @@ def entrar_valores(event):
     # Passa o valor para tela
     valor_texto.set(valores_digitados)
 
+# Cria funcao para fazer a contas
+def calcular():
+    global valores_digitados
+    valores_digitados = str(eval(valores_digitados))
+    valor_texto.set(valores_digitados)
+
+# Cria funcao de limpar tela
+def limpar_tela():
+    global valores_digitados
+    valores_digitados = ''
+    valor_texto.set("")
+
 # Cria os botões
-b_1 = Button(frame_corpo, text="C", width=32, height=6, bg=cor6, font=('Ivy 9 bold'), relief=RAISED, overrelief=RIDGE)
+b_1 = Button(frame_corpo, command=limpar_tela, text="C", width=32, height=6, bg=cor6, font=('Ivy 9 bold'), relief=RAISED, overrelief=RIDGE)
 b_1.place(x=0, y=0)
 b_2 = Button(frame_corpo, command=lambda:entrar_valores('%'), text="%", width=16, height=6, bg=cor6, font=('Ivy 9 bold'), relief=RAISED, overrelief=RIDGE)
 b_2.place(x=230, y=0)
@@ -78,7 +90,7 @@ b_16 = Button(frame_corpo, command=lambda:entrar_valores('0'), text="0", width=3
 b_16.place(x=0, y=400)
 b_17 = Button(frame_corpo, command=lambda:entrar_valores('.'), text=".", width=16, height=6, bg=cor6, font=('Ivy 9 bold'), relief=RAISED, overrelief=RIDGE)
 b_17.place(x=230, y=400)
-b_18 = Button(frame_corpo, text="=", width=16, height=6, bg=cor7, fg=cor3, font=('Ivy 9 bold'), relief=RAISED, overrelief=RIDGE)
+b_18 = Button(frame_corpo, command=calcular, text="=", width=16, height=6, bg=cor7, fg=cor3, font=('Ivy 9 bold'), relief=RAISED, overrelief=RIDGE)
 b_18.place(x=350, y=400)
 
 janela.mainloop()
